@@ -1,0 +1,23 @@
+<div id="main" class="container">
+    <h3 id="heading">Login Form</h3><br />
+    <div id="loginForm">
+        <form [formGroup]="userLogin" (ngSubmit)="Login()">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="text" formControlName="emailId" class="form-control" aria-describedby="emailHelp"/>
+                <div class="warning" *ngIf="userLogin.get('emailId').touched && userLogin.get('emailId').errors?.required">*Required Field</div>
+                <div class="warning" *ngIf="userLogin.get('emailId').touched && userLogin.get('emailId').errors?.pattern">*Enter valid email</div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" formControlName="password" class="form-control"/>
+                <div class="warning" *ngIf="userLogin.get('password').touched && userLogin.get('password').errors?.required">*Required Field</div>
+            </div>
+            <div id="submitBtn">
+                <input type="submit" value="Submit" [disabled]="!userLogin.valid" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<br /><br /><br /><br /><br />
